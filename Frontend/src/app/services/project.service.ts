@@ -21,7 +21,7 @@ export interface Project {
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'http://localhost:52443/api/projects';
+  private apiUrl = 'https://projmanag-backend.onrender.com/api/projects';
 
   constructor(private http: HttpClient) { }
 
