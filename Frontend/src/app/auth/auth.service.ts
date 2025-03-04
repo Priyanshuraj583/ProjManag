@@ -7,7 +7,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:52443/api/auth';
+  private apiUrl = 'https://projmanag-backend.onrender.com/api/auth';
 
   constructor(private http: HttpClient) { }
 
