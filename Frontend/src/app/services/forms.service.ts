@@ -7,6 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class FormsService {
   private apiUrl = 'https://projmanag-backend.onrender.com/api/forms';
+<<<<<<< HEAD
+=======
+  // private apiUrl = 'http://localhost:52443/api/forms';
+>>>>>>> 2a56009 (dist added)
 
   constructor(private http: HttpClient) { }
 
