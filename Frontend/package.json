@@ -16,7 +16,7 @@
 
     "test": "ng test",
 
-    "serve:ssr": "node dist/project-management-dashboard/server/server.mjs"
+  
 
   },
 
