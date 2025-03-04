@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FormsService {
-  private apiUrl = 'http://localhost:52443/api/forms';
+  private apiUrl = 'https://projmanag-backend.onrender.com/api/forms';
 
   constructor(private http: HttpClient) { }
 
