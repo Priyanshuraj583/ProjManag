@@ -1,0 +1,12 @@
+<div class="container" *ngIf="project">
+  <h2>{{ project.name }}</h2>
+  <p>Status: {{ project.status }}</p>
+  <h3>Tasks</h3>
+  <ul>
+    <li *ngFor="let task of project.tasks">
+      {{ task.desc }} ({{ task.status }})
+    </li>
+  </ul>
+  <p>Focus for Next Week: {{ project.focusNextWeek }}</p>
+  <button (click)="exportAsPDF()">Export as PDF</button>
+</div>

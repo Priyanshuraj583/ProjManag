@@ -1,0 +1,76 @@
+<div class="container">
+  <h2>Welcome, {{ username }}</h2>
+  <button (click)="logout()">Logout</button>
+
+  <div class="forms">
+    <h3>Select Form</h3>
+    <select (change)="selectForm($event)">
+      <option *ngFor="let form of forms" [value]="form.id">{{ form.name }}</option>
+    </select>
+  </div>
+
+  <div class="filters">
+    <h3>Filter Projects</h3>
+    <div>
+      <label>Team:</label>
+      <input [(ngModel)]="filterTeam" placeholder="Enter team name">
+    </div>
+    <div>
+      <label>Status:</label>
+      <input [(ngModel)]="filterStatus" placeholder="Enter status">
+    </div>
+  </div>
+
+  <div class="projects">
+    <h3>Projects</h3>
+    <ul>
+      <li *ngFor="let project of filterProjects()" (click)="selectProject(project)">
+        {{ project.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="project-details" *ngIf="selectedProject">
+    <h3>{{ selectedProject.name }}</h3>
+    <div>
+      <label>Current Status:</label>
+      <input [(ngModel)]="selectedProject.status">
+    </div>
+    <div>
+      <label>Focus for Next Week:</label>
+      <input [(ngModel)]="selectedProject.focusNextWeek">
+    </div>
+    <div class="tasks">
+      <h4>Tasks</h4>
+      <ul>
+        <li *ngFor="let task of selectedProject.tasks">
+          {{ task.desc }} - {{ task.status }}
+          <select [(ngModel)]="task.status">
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <div class="new-task">
+      <h4>Add New Task</h4>
+      <input [(ngModel)]="newTaskDesc" placeholder="Task Description">
+      <select [(ngModel)]="newTaskStatus">
+        <option value="in-progress">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+      <button (click)="addTask()">Add Task</button>
+    </div>
+    <button (click)="updateProjectStatus()">Update Project Status</button>
+    <div *ngIf="statusMessage" class="status-message">{{ statusMessage }}</div>
+  </div>
+
+  <div class="new-project" *ngIf="role === 'manager'">
+    <h3>Add New Project</h3>
+    <input [(ngModel)]="newProject.name" placeholder="Project Name">
+    <input [(ngModel)]="newProject.status" placeholder="Status">
+    <input [(ngModel)]="newProject.focusNextWeek" placeholder="Focus for Next Week">
+    <input [(ngModel)]="newProject.team" placeholder="Team">
+    <button (click)="addProject()">Add Project</button>
+  </div>
+</div>
